@@ -3,9 +3,15 @@ from local_data.local_data_handler import LocalDataHandler
 
 ld_handler = LocalDataHandler()
 
-print("longitudes: ", ld_handler.get_longitudes())
-print("latitudes: ", ld_handler.get_latitudes())
-print("identifiers: ", ld_handler.get_identifiers())
 
-print("data", ld_handler.get_data())
+node_ids =  ld_handler.get_node_ids()
+samle_id = node_ids[0]
+
+detector = ld_handler.get_detector_by_node_id(samle_id)
+node = ld_handler.get_metdata_by_detector_id(detector)
+
+print(detector)
+
+print(node)
+
 
