@@ -140,9 +140,3 @@ class LocalDataHandler():
             raise Exception(f"Could not find metadata for node_id: {node_id}")
 
 
-if __name__ == "__main__":
-    ld_handler = LocalDataHandler()
-    print("metadata: ", ld_handler.get_metadata().keys())
-    print("losed ids: ", ld_handler.id_losses)
-    print("length of ids", len(ld_handler.identifiers))
-
