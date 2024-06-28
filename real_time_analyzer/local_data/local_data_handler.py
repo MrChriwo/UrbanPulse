@@ -67,7 +67,7 @@ class LocalDataHandler():
         """
         Returns a tuple containing the node_ids, longitudes and latitudes
         """
-        if not self._is_source_available(self.longitude) or not self._is_source_available(self.latitude) or not self._is_source_available(self.identifiers):
+        if not self._is_source_available(self.longitude) or not self._is_source_available(self.latitude) or not self._is_source_available(self.node_ids):
             raise Exception("No data loaded")
 
         return self.node_ids, self.longitude, self.latitude
