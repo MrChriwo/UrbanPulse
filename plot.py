@@ -1,5 +1,4 @@
 import argparse
-import glob
 from itertools import cycle
 
 import matplotlib.pyplot as plt
