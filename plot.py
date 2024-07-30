@@ -1,13 +1,12 @@
 import argparse
+import os
 from itertools import cycle
-
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
-import os
 
-sns.set(
+sns.set_theme(
     style="darkgrid",
     rc={
         "figure.facecolor": "#252629", 

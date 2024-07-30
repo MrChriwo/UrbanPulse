@@ -1,15 +1,16 @@
 import os 
-
 from sumo_rl import parallel_env, env 
 
 PATH = os.path.dirname(os.path.realpath(__file__))
 
 
 def darmstadt_env(parallel=True, **kwargs):
-    """Darmstadt Enviornment.
+    """
+    Darmstadt Enviornment.
 
     Number of agents: 3
     Number of actions: 2 agents with 4 actions and 1 agent with 3 actions
+
     2 agents have the same observation and action space and 1 has different spaces
     """
     kwargs.update(

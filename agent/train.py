@@ -1,9 +1,8 @@
 import os
 import sys
-
 import fire
 
-
+# Add the SUMO tools directory to the system path
 if "SUMO_HOME" in os.environ:
     tools = os.path.join(os.environ["SUMO_HOME"], "tools")
     sys.path.append(tools)
@@ -11,16 +10,16 @@ else:
     sys.exit("Please declare the environment variable 'SUMO_HOME'")
 
 from linear_rl.true_online_sarsa import TrueOnlineSarsaLambda
+from agent.env import darmstadt_env
 
-from sumo_rl import cologne8
-
-
+# Training function using fire package
 def run(use_gui=False, episodes=50):
     fixed_tl = False
-
-    env = cologne8(out_csv_name="outputs/darmstadt/test", use_gui=use_gui, yellow_time=2, fixed_ts=fixed_tl)
+    # Initialize the environment
+    env = darmstadt_env(out_csv_name="outputs/darmstadt/test", use_gui=use_gui, yellow_time=2, fixed_ts=fixed_tl)
     env.reset()
 
+    # Initialize the agents
     agents = {
         ts_id: TrueOnlineSarsaLambda(
             env.observation_spaces[ts_id],
@@ -34,6 +33,7 @@ def run(use_gui=False, episodes=50):
         for ts_id in env.agents
     }
 
+    # Train the agents
     for ep in range(1, episodes + 1):
         obs, _ = env.reset()
         done = {agent: False for agent in env.agents}
@@ -56,9 +56,8 @@ def run(use_gui=False, episodes=50):
                         done=terminated[ts_id],
                     )
                     obs[ts_id] = next_obs[ts_id]
-
     env.close()
 
-
+# Run the training
 if __name__ == "__main__":
     fire.Fire(run)
