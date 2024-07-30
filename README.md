@@ -61,7 +61,8 @@ The `real_time_analyzer` folder consists of a script for analyzing the live data
   python app.py
   ```
 
-  This script connects to the Darmstadt websocket and analyzes the incoming live data. The websocket credentials are not authorized anymore so be sure to update those before running the script.
+  This script connects to the Darmstadt websocket and analyzes the incoming live data. <br>
+  !!! The websocket credentials are not authorized anymore so be sure to update those before running the script. !!!
 
 ### Plotting
 
